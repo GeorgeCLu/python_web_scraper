@@ -7,3 +7,5 @@ The jupyter notebook contains a web scraper that uses python and BeautifulSoup t
 As the full notebook is too large to display on github, another notebook "car sales data scraper first page data only.ipynb" which only scraped listings from the first page of Autotrader may be viewed.
 
 This data was then put into PowerBi to create data visulisations which are contained in the pbix, ppt and pdf files.
+
+The presentation slides contain further visualisation of data and trends of the listings, such as price vs mileage.
