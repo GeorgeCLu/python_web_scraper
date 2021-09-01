@@ -124,7 +124,7 @@ Transmission was quantified were the various types of automatic transmissions (a
   </li>
   
   <li>
-Colour was attempted to be quantified by for example grouping into whther they were hot or cold colours of light or dark colours or using their RGB values. However as these did not produce any significant results, as well as cars all having different shades of the colour they are listed as compared to each other - literally fifty shades of grey - I did not attempt this any further.
+Colour was attempted to be quantified by for example grouping into whther they were hot or cold colours of light or dark colours or using their RGB values. However as these did not produce any significant results, as well as cars all having different shades of the colour they are listed as compared to each other, I did not attempt this any further.
   </li>
   
   <li>
@@ -286,4 +286,4 @@ On the other hand autotraders popularity ranking seemed to have no influence on 
 
 **A Conclusion with your answer to the business problem**
 
-So the factors that have the most impact on a cars listing price are: year, mileage, door number, engine size, brand market segment, whether it had an automatic and the scale of the cars location's population size.
+So the factors that have the most impact on a cars listing price are: year, mileage, door number, engine size, brand market segment, whether it had an automatic transmission and the scale of the cars location's population size.
