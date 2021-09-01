@@ -10,10 +10,10 @@ As the full notebook is too large to display on github, another notebook "car sa
 
 This data was then put into PowerBi to create data visulisations which are contained in the otherwise identical pbix, ppt and pdf files.
 
-The presentation slides contain further visualisation of data and trends of the listings, such as price vs mileage.
+The presentation slides contain some further visualisation of data and trends of the listings.
 
 
-Below is a summary of my findings
+Below is a summary of my presentation <br/><br/>
 
 **Business problem you are aiming to solve and relevant assumptions**
 
@@ -22,7 +22,7 @@ Well naturally you would expect a newer BMW would cost more than an older Datsun
 
 So to investigate this, I decided to web scrap https://www.autotrader.co.nz/ 
 
-I used Autotraders search by popularity so that I could also generate a popularity variable as determined by a cars page and its page rank similar to that of the example given in the training day. I will be assuming that Autotraders page rank is accurate representation of popular cars.
+I used Autotrader's search by popularity so that I could also generate a popularity variable as determined by a cars page and its page rank similar to that of the example given in the training day. I will be assuming that Autotraders page rank is accurate representation of popular cars.
 Also I am presuming that searching by popularity will capture a representative sample of vehicles sold and bought in New Zealand, as opposed to unpopular cars that sit on dealer lots unsold, presumably due to factors such as poor condition or an unrealistic asking price.
 
 **An explanation of your analysis.**
@@ -30,7 +30,7 @@ Also I am presuming that searching by popularity will capture a representative s
 I trawled through 750 pages from Autotrader each with 20 listings, to produce a data set with about 15,000 cars, which you may see in car sales test.ipynb. The code was based on the example from the training day with some modification.
 I also scraped the following details from each listing:
 
-![alt text](https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2FListing.PNG)
+![Alt text](images/Listing.PNG)<br/><br/>
 <ul>
 <li>Year</li>
 <li>Brand</li>
@@ -60,24 +60,23 @@ Immediately obvious trends included that year and price have a positive exponent
 The inverse was true of mileage and price. 
 Also whilst the newest vehicles had the lowest mileages, the mileage increased for earlier models only up to a point before there was no clear trend.
 
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Pair%20Plots%2Fyear%20vs%20price.png" width="500"/>
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Pair%20Plots%2Fprice%20vs%20mileage.png" width="500"/>
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Pair%20Plots%2Fyear%20vs%20mileage.png" width="500"/>
+![Alt text](images/year%20vs%20price.png)<br/><br/>
+![Alt text](images/price%20vs%20mileage.png)<br/><br/>
+![Alt text](images/year%20vs%20mileage.png)<br/><br/>
 
 The pair plots revealed that there were some very interesting cars including an Isuzu from the year 2301 and a BMW with 52 doors which I decided to exclude.
-
-![alt text](https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2F2301%20Isuzu.PNG)
-![alt text](https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2F52%20door%20BMW.PNG)
+![Alt text](images/2301%20Isuzu.PNG)<br/><br/>
+![Alt text](images/52%20door%20BMW.PNG)<br/><br/>
 
 Some cars were listed with other incorrect features such as unrealistically small or big engine sizes (engines with less than 500cc or more than 9000cc),  which were obviously listed incorrectly. As a number of electric cars (which have no internal combustion engine) were listed as such, I converted those engine values to 'NA'.
 Also some cars were listed as being a one door, where upon investigation it seemed that were incorrectly listed. The same goes for the three listings that had 6 and 7 doors. These were also excluded.
 The most expensive listing by far away was a Mclaren Senna worth nearly 2 million dollars. Whilst this was not an unfair asking price, as a type of car that rarely saw the market, it was also excluded as well.
 
-![alt text](https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2FMclaren%20Senna.PNG)
+![Alt text](images/Mclaren%20Senna.PNG)<br/><br/>
 
 In addition to the prior mentioned trends, the correlation charts also revealed that door numbers was negatively correlated with price and engine size. Also engine size was positively correlated with price. As some variables were not numerical, they were converted into dummy variables to see if there were any correlation. This will be explained further in the next part. Trade vehicles were more likely to have a higher mileage. However overall there were no very strong correlations that warrented removing of variables.
 
-![alt text](https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2Fcorrelation.png)
+![Alt text](images/correlation.png)<br/><br/>
 
 The code used to remove rows of data is in clean.r
 
@@ -141,18 +140,17 @@ Variable subset selection can be done using functions from the leaps library.
 This helps determine the best model with number of variables present by determining the Cp, adjusted r squared and BIC values. This will look at the variables: year, mileage..km., door_number, engine_size..cc., rank, segment, fuel_electricity_ratio, trade, automatic, dealer, seller_rank. 
 
 Using the code in model_selection.r, we produce the following plots for adjusted r squared, Cp, and Bayesian Information Criterion:
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2FR%5E2.png" width="500"/>
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2Fcp.png" width="500"/>
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2FBIC.png" width="500"/>
- The adjusted r squared gives 9 variables as the optimal model, whilst the other two give 7.
+![Alt text](images/Images_R^2.png)<br/><br/>
+![Alt text](images/Images_cp.png)<br/><br/>
+![Alt text](images/Images_BIC.png)<br/><br/>
+
+The adjusted r squared gives 9 variables as the optimal model, whilst the other two give 7.
 
 The plot.regsubsets method was used to see which variables to use by plotting the regsubsets object.
 
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2Fadj%20r2%20plot.png" width="500"/>
-
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2Fadj%20cp%20plot.png" width="500"/>
-
-<img src="https://notebooks.azure.com/GL333/projects/cars-sales-test/raw/Images%2Fbic%20plot.png" width="500"/>
+![Alt text](images/Images_adj%20r2%20plot.png)<br/><br/>
+![Alt text](images/Images_adj%20cp%20plot.png)<br/><br/>
+![Alt text](images/Images_bic%20plot.png)<br/><br/>
 
 For both adjusted r squared and bic, it seemed to level out for different number of combinations of variables, however for cp, the lowest value of 7.7 was acheived with just one combination of seven variables: year, mileage, door number, engine size, brand market segment, whether it had an automatic and the scale of the cars location's population size.
 
